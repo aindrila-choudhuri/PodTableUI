@@ -11,7 +11,7 @@ function ListPods() {
     const [row, setRowData] = useState([]);
     const [filter, setFilter] = useState("");
     const [filterSelect, setFilterSelect] = useState("");
-    const [sortedObj, setSortedObj] = React.useState({columnName: "", isSorted: false, isSortedAsc: false});
+    const [sortedObj, setSortedObj] = useState({columnName: "", isSorted: false, isSortedAsc: false});
     const [selectedPods, setSelectedPods] = useState([]);
 
     function handleSort(colName, colIndex){
