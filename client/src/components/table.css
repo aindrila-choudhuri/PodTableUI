@@ -23,6 +23,7 @@ table {
 
   .left {
     text-align: left;
+    margin-bottom: 20px;
   }
 
   .filter {
@@ -47,4 +48,11 @@ table {
     border: 1px solid #f4f6f8;
     padding: 4px;
     text-align: center;
+  }
+
+  .listpod {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-right: 150px;
+    margin-left: 80px;
   }

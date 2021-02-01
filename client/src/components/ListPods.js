@@ -12,6 +12,7 @@ function ListPods() {
     const [filter, setFilter] = useState("");
     const [filterSelect, setFilterSelect] = useState("");
     const [sortedObj, setSortedObj] = React.useState({columnName: "", isSorted: false, isSortedAsc: false});
+    const [selectedPods, setSelectedPods] = useState([]);
 
     function handleSort(colName, colIndex){
         const nextIsSorteObj = {...sortedObj};
@@ -58,12 +59,18 @@ function ListPods() {
     }
 
     function filterText(val, colName) {
-        let filteredPod = podDetails
-        if(val.trim() !== "") {
-            filteredPod = podDetails.filter((pod) => pod[colName].toLowerCase().indexOf(val.toLowerCase()) > -1);
+        let filteredPod =[...podDetails];
+        if (filterSelect !== STATUS[0].toLowerCase()) {
+            filteredPod = [...selectedPods];setFilterSelect(val);
         }
+        
+        if(val.trim() !== "") {
+            filteredPod = filteredPod.filter((pod) => pod[colName].toLowerCase().indexOf(val.toLowerCase()) > -1);
+        }
+
         const result = filteredPod.map(({ name, nameSpace, status, age }) => [name, nameSpace, status, age]);
-        setRowData(result)
+
+        setRowData(result);
     }
 
     const debounce = (fn, delay) => {
@@ -80,12 +87,14 @@ function ListPods() {
 
     function handleSelect(val) {
         setFilterSelect(val);
+        setFilter("");
         let filteredPod = podDetails
         if(val.trim() !== "" && val.toLowerCase() !== STATUS[0].toLowerCase()) {
             filteredPod = podDetails.filter((pod) => {
                 return pod.status.toLowerCase() === val.toLowerCase()
             });
         }
+        setSelectedPods(filteredPod);
         const result = filteredPod.map(({ name, nameSpace, status, age }) => [name, nameSpace, status, age]);
         setRowData(result);
     }
@@ -102,7 +111,7 @@ function ListPods() {
     }, [])
 
     return(
-        <div>
+        <div className="listpod">
             <h1 className="left">Pods</h1>
             <div className="left">
                 <FilterText filter = {filter || ""} columnName = "name" changeHandler={handleChange}/>
