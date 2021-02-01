@@ -1,0 +1,29 @@
+{
+  "name": "Table1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "font-awesome": "^4.7.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm start",
+    "server": "cd server && node app.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aindrila-choudhuri/Table1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aindrila-choudhuri/Table1/issues"
+  },
+  "homepage": "https://github.com/aindrila-choudhuri/Table1#readme"
+}
