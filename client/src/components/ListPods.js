@@ -5,6 +5,7 @@ import "./table.css";
 import FilterText from "./FilterText";
 import FilterSelect from "./FilterSelect";
 import {STATUS} from "./constants";
+const config = require("./config");
 
 function ListPods() {
     const [podDetails, setPodDetails] = useState([]);
@@ -64,7 +65,7 @@ function ListPods() {
         if ((filterSelect.toLowerCase() !== "") && (filterSelect.toLowerCase() !== STATUS[0].toLowerCase())) {
             filteredPod = [...selectedPods];
         }
-        
+
         if(val.trim() !== "") {
             filteredPod = filteredPod.filter((pod) => pod[colName].toLowerCase().indexOf(val.toLowerCase()) > -1);
         }
@@ -101,7 +102,7 @@ function ListPods() {
     }
 
     useEffect(()=> {
-        fetch("http://localhost:8060/pods").then(response => response.json())
+        fetch(config.getPodsURL).then(response => response.json())
         .then(data => {
             data.forEach( pod => pod.age = new Date(pod.age).toString());
             setPodDetails(data);
