@@ -33,16 +33,10 @@ app.get("/pods", (req, response) => {
                 resObj.nameSpace = item && item.metadata && item.metadata.namespace ? item.metadata.namespace : "";
                 resObj.status = item && item.status && item.status.phase ? item.status.phase : "";
                 resObj.age = item && item.metadata && item.metadata.creationTimestamp ? item.metadata.creationTimestamp: "";
-                //console.log("==resObj==", resObj);
                 resArr.push(resObj);
             });
         }
-        //2021-01-30T06:45:45.000Z
-        resArr.push({ name: 'kubernetes-dashboard-6cff4c7c4f-pvlvz',
-        nameSpace: 'kubernetes-dashboard',
-        status: 'Pending',
-        age: '2021-02-01T06:00:27.000Z' });
-
+        
         response.json(resArr)
     });
 })
