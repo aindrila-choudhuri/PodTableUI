@@ -54,14 +54,15 @@ function ListPods() {
 
     function handleChange(val, colName) {
         setFilter(val);
-        const debouncedGetData = debounce(filterText, 500);
-        debouncedGetData(val, colName);
+        const debouncedFilteredData = debounce(filterText, 500);
+        debouncedFilteredData(val, colName);
     }
 
     function filterText(val, colName) {
         let filteredPod =[...podDetails];
-        if (filterSelect !== STATUS[0].toLowerCase()) {
-            filteredPod = [...selectedPods];setFilterSelect(val);
+
+        if ((filterSelect.toLowerCase() !== "") && (filterSelect.toLowerCase() !== STATUS[0].toLowerCase())) {
+            filteredPod = [...selectedPods];
         }
         
         if(val.trim() !== "") {
