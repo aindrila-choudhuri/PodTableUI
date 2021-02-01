@@ -9,7 +9,7 @@ Similary from the project directory navigate to server (cd server) directory and
 ### `npm install`
 
 In the project directory, you can run:
-### 'npm install`
+### `npm install`
 ### `npm run dev`
 
 Runs the app in the development mode.\
